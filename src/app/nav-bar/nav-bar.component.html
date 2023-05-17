@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+
+    <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon> 
+        Agenda de Citas - Reto Semillero</button>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+        
+        <a routerLink="/Citas" class="button" mat-button routerLinkActive="activebutton">
+            <mat-icon>event</mat-icon>Citas </a>
+        <a class="button" mat-button routerLink="/Pruebas">
+            <mat-icon>list_alt</mat-icon>Pruebas</a>
+        <a class="button" mat-button routerLink="/Afiliados">
+            <mat-icon>assignment_ind</mat-icon>Afiliados</a>
+    </div>
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+     <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-menu x-position="Before" #menu="matMenu">
+    <button mat-button routerLink="/Citas">Citas</button>
+    <button mat-button routerLink="/Pruebas">Pruebas</button>
+    <button mat-button routerLink="/Afiliados">Afiliados</button>
+</mat-menu>

@@ -4,15 +4,84 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { AffiliatesGetListComponent } from './core/affiliates-get-list/affiliates-get-list.component';
+
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatTableModule } from "@angular/material/table";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
+import { RouterModule, Routes } from '@angular/router';
+
+
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { HomeComponent } from './home/home.component';
+import { DatePickerComponent } from './home/home.components/date-picker/date-picker.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { IdPickerComponent } from './home/home.components/id-picker/id-picker.component';
+import { FormsModule } from '@angular/forms';
+import { MY_FORMATS } from './environments/my_date_format';
+import { TablaHomeComponent } from './home/home.components/tabla-home/tabla-home.component';
+import { CitasComponent } from './citas/citas.component';
+import { PruebasComponent } from './pruebas/pruebas.component';
+import { AfiliadosComponent } from './afiliados/afiliados.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AffiliatesGetListComponent,
+    NavBarComponent,
+    HomeComponent,
+    DatePickerComponent,
+    IdPickerComponent,
+    TablaHomeComponent,
+    CitasComponent,
+    PruebasComponent,
+    AfiliadosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    RouterModule
   ],
-  providers: [],
+  exports: [
+    MatTabsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
+  ],
+  providers: [MatNativeDateModule, 
+              {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+              {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

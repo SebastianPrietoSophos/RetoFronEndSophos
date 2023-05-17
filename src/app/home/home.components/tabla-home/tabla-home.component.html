@@ -1,0 +1,15 @@
+<table bordar="2">
+    <tr>
+        <th>id</th>
+        <th>nombre</th>
+        <th>mail</th>
+        <th>edad</th>
+        
+    </tr>
+    <tr *ngFor="let data of dataSourceTable">
+        <td>{{data.affiliates.id}}</td>
+        <td>{{data.affiliates.nombre}}</td>
+        <td>{{data.affiliates.mail}}</td>
+        <td>{{data.affiliates.age}}</td>
+    </tr>
+</table>
