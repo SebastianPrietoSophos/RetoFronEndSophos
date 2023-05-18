@@ -14,3 +14,13 @@ export interface AppointmentsModel {
         mail : string
         }
 }
+export interface AppointmentsModelForPost {
+    date: string,
+    hour: string,
+    tests : {
+        id : number
+        },
+    affiliates : {
+        id : number
+        }
+}

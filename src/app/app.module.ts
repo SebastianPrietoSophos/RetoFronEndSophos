@@ -21,6 +21,11 @@ import { MatTableModule } from "@angular/material/table";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+
+
 
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -39,6 +44,10 @@ import { TablaHomeComponent } from './home/home.components/tabla-home/tabla-home
 import { CitasComponent } from './citas/citas.component';
 import { PruebasComponent } from './pruebas/pruebas.component';
 import { AfiliadosComponent } from './afiliados/afiliados.component';
+import { CitaNuevaComponent } from './citas/cita-nueva/cita-nueva.component';
+import { AfiliadoNuevoComponent } from './afiliados/afiliado-nuevo/afiliado-nuevo.component';
+import { PruebaNuevaComponent } from './pruebas/prueba-nueva/prueba-nueva.component';
+import { appointmentsPost } from './core/services/appointmentPost.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +60,10 @@ import { AfiliadosComponent } from './afiliados/afiliados.component';
     TablaHomeComponent,
     CitasComponent,
     PruebasComponent,
-    AfiliadosComponent
+    AfiliadosComponent,
+    CitaNuevaComponent,
+    AfiliadoNuevoComponent,
+    PruebaNuevaComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +81,11 @@ import { AfiliadosComponent } from './afiliados/afiliados.component';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MatDividerModule,
+    MatSelectModule
   ],
   exports: [
     MatTabsModule,
@@ -81,7 +96,8 @@ import { AfiliadosComponent } from './afiliados/afiliados.component';
   ],
   providers: [MatNativeDateModule, 
               {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-              {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},],
+              {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+              appointmentsPost],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

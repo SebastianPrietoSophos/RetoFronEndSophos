@@ -1,0 +1,56 @@
+<div class="container">
+    <mat-card class="card_form">
+        <div class="container">
+            <h3><b>Citas- Nueva Cita</b></h3>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="form-field">
+                        <mat-label>Elige una fecha</mat-label>
+                        <input matInput [matDatepicker]="picker" #fechaseleccionada>
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="form-field">
+                        <mat-label>Selecciona la hora</mat-label>
+                        <mat-select  [(value)]="selectedHour" #horaseleccionada>
+                          <mat-option [value]="hora"  *ngFor=" let hora of horasCitas">{{hora}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="form-field" >
+                        <mat-label>Ingresa el ID del afiliado</mat-label>
+                        <input matInput type="number" [(ngModel)]="valueAffiliate" #idSeleccionadoAfiliado>
+                        <button *ngIf="valueAffiliate" matSuffix mat-icon-button aria-label="Clear" (click)="valueAffiliate=0">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="form-field" >
+                        <mat-label>Ingresa el ID de la prueba</mat-label>
+                        <input matInput type="number" [(ngModel)]="valueTest" #idSeleccionadoPrueba>
+                        <button *ngIf="valueTest" matSuffix mat-icon-button aria-label="Clear" (click)="valueTest=0">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
+            <br>
+            <div class="row  justify-content-end">
+                <div class="col col-1">
+                    <button type="button" class="btn btn-success" 
+                    (click)="post(fechaseleccionada, horaseleccionada, idSeleccionadoPrueba, idSeleccionadoAfiliado)">Guardar</button>
+                </div>
+                <div class="col col-2">
+                    <button type="button" class="btn btn-danger" routerLink="/Citas">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+
+</div>
+

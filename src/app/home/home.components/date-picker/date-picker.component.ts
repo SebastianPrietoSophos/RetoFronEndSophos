@@ -14,6 +14,5 @@ export class DatePickerComponent {
   confirmDate(fechaSeleccionada : HTMLInputElement){
     console.log(fechaSeleccionada.value);
     this.fecha_elegida.emit(fechaSeleccionada.value);
-    console.log(fechaSeleccionada.value)
   }
 }

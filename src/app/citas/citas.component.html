@@ -1,13 +1,12 @@
-
 <div class="container">
     <div class="row justify-content-end">
         <div class="col-1">
-            <button type="button" class="btn btn-outline-dark">
-                Nueva Cita<mat-icon>add_circle</mat-icon></button>
+            <button type="button" class="btn btn-outline-dark" routerLink="/nuevaCita">
+            Nueva Cita <mat-icon>add_circle</mat-icon></button>
         </div>
     </div>
     <br>
-    <table class="table table-striped table-hover text-center">
+    <table class="table table-striped table-hover text-center align-middle">
         <thead>
           <tr>
             <th scope="col" *ngFor="let column of displayedColumns">{{column}}</th>

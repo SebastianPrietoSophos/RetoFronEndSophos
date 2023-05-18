@@ -1,18 +1,10 @@
-<mat-form-field appearance="fill" class="example-form-field">
-    <mat-label>Elije la fecha</mat-label>
-    <input matInput [matDatepicker]="datepicker" #fechaseleccionada>
-    <mat-hint>DD/MM/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-    <mat-datepicker #datepicker>
-      <mat-datepicker-actions>
-        <button mat-button matDatepickerCancel>Cancel</button>
-        <button mat-raised-button color="primary" matDatepickerApply 
-          (click)="confirmDate(fechaseleccionada)">Apply
-        </button>
-      </mat-datepicker-actions>
-      
-    </mat-datepicker>
-  </mat-form-field>
+<mat-form-field>
+  <mat-label>Elige una fecha</mat-label>
+  <input matInput [matDatepicker]="picker" #fechaseleccionada>
+  <mat-hint>DD/MM/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
   
   <button mat-raised-button color="primary" (click)="confirmDate(fechaseleccionada)">
     Consultar
