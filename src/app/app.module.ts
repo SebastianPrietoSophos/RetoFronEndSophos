@@ -97,6 +97,7 @@ import { appointmentsPost } from './core/services/appointmentPost.service';
   providers: [MatNativeDateModule, 
               {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
               {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+              appointmentsPost,
               appointmentsPost],
   bootstrap: [AppComponent]
 })

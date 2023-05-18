@@ -1,5 +1,5 @@
 export interface TestsModel {
-    id : number,
+    id? : number,
     nombre : string,
     description : string
 }

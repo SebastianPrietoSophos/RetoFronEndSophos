@@ -1,5 +1,5 @@
 export interface AffiliatesModel{
-    id : number,
+    id? : number,
     nombre : string,
     age : number,
     mail : string

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppointmentsModelForPost } from 'src/app/core/models/appointments.model';
+import { AppointmentsModel } from 'src/app/core/models/appointments.model';
 import { appointmentsPost } from 'src/app/core/services/appointmentPost.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class CitaNuevaComponent {
     selectedHour : string = '';
     valueAffiliate : number = 0;
     valueTest : number = 0;
-    public newAppointment : AppointmentsModelForPost = {
+    public newAppointment : AppointmentsModel = {
                                                   date:"12-12-2012",
                                                   hour:"12:12:00",
                                                   tests:{id:1},

@@ -3,21 +3,19 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/app/environments/environments.master";
 import { Observable } from 'rxjs';
 import { AffiliatesModel } from "../models/affiliates.model";
-import { AppointmentsModel } from "../models/appointments.model";
-
 @Injectable({
     providedIn: 'root'
   })
-export class appointmentsPost{
+export class affiliatePost{
 
     
-    public url : string = environment.ApiUrlAppointments;
+    public url : string = environment.ApiUrlAffiliates;
 
     constructor(private http : HttpClient){}
 
-    postAppointment(appointment : AppointmentsModel) {
+    postAffiliate(affiliate : AffiliatesModel) {
 
-        this.http.post(this.url, appointment)
+        this.http.post(this.url, affiliate)
         .subscribe(
             response => 
                 console.log("Respuesta Post Appointments: "+response),
