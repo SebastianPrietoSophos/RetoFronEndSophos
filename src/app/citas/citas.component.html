@@ -13,16 +13,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of dataSource">
+          <tr *ngFor="let item of dataSource, let i = index">
             <th scope="row">{{item.id}}</th>
             <td>{{item.date}}</td>
             <td>{{item.hour}}</td>
             <td>{{item.tests.id}}</td>
             <td>{{item.affiliates.id}}</td>
-            <td><button mat-icon-button color="primary" aria-label="Actualizar">
+            <td><button mat-icon-button color="primary" aria-label="Actualizar"
+              (click)="actualizar(i)" routerLink="/actualizarCita">
                 <mat-icon>autorenew</mat-icon>
               </button>
-              <button mat-icon-button color="warn" aria-label="Actualizar">
+              <button mat-icon-button color="warn" aria-label="Borrar"
+              (click)="borrar(i)">
                 <mat-icon>delete</mat-icon>
               </button>
             </td>
@@ -32,4 +34,6 @@
 
      
 </div>
+
+
     

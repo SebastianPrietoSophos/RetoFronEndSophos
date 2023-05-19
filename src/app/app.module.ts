@@ -24,6 +24,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -48,6 +49,12 @@ import { CitaNuevaComponent } from './citas/cita-nueva/cita-nueva.component';
 import { AfiliadoNuevoComponent } from './afiliados/afiliado-nuevo/afiliado-nuevo.component';
 import { PruebaNuevaComponent } from './pruebas/prueba-nueva/prueba-nueva.component';
 import { appointmentsPost } from './core/services/appointmentPost.service';
+import { CitaActualizacionComponent } from './citas/cita-actualizacion/cita-actualizacion.component';
+import { DialogConfirmationPutComponent } from './citas/cita-actualizacion/dialog-confirmation-put/dialog-confirmation-put.component';
+import { PruebaActualizacionComponent } from './pruebas/prueba-actualizacion/prueba-actualizacion.component';
+import { DialogConfirmationPutPruebaComponent } from './pruebas/prueba-actualizacion/dialog-confirmation-put/dialog-confirmation-put.component';
+import { AfiliadoActualizacionComponent } from './afiliados/afiliado-actualizacion/afiliado-actualizacion.component';
+import { DialogConfirmationPutAffiliateComponent } from './afiliados/afiliado-actualizacion/dialog-confirmation-put-affiliate/dialog-confirmation-put-affiliate.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +70,14 @@ import { appointmentsPost } from './core/services/appointmentPost.service';
     AfiliadosComponent,
     CitaNuevaComponent,
     AfiliadoNuevoComponent,
-    PruebaNuevaComponent
+    PruebaNuevaComponent,
+    CitaActualizacionComponent,
+    DialogConfirmationPutComponent,
+    PruebaActualizacionComponent,
+    DialogConfirmationPutComponent,
+    DialogConfirmationPutPruebaComponent,
+    AfiliadoActualizacionComponent,
+    DialogConfirmationPutAffiliateComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +99,8 @@ import { appointmentsPost } from './core/services/appointmentPost.service';
     FormsModule,
     RouterModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   exports: [
     MatTabsModule,

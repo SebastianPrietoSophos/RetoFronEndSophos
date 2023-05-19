@@ -1,22 +1,31 @@
 <div class="container">
     <mat-card class="card_form">
         <div class="container">
-            <h3><b>Pruebas- Nueva Prueba</b></h3>
+            <h3><b>Afiliados- Nuevo Afiliado ID: {{id}}</b></h3>
             <div class="row">
-                <div class="col col-3">
+                <div class="col">
                     <mat-form-field class="form-field" >
                         <mat-label>Ingresa el Nombre</mat-label>
-                        <input matInput type="string" [(ngModel)]="nombreValue" #nombrePrueba>
+                        <input matInput type="string" [(ngModel)]="nombreValue" #nombreAfiliado>
                         <button *ngIf="nombreValue" matSuffix mat-icon-button aria-label="Clear" (click)="nombreValue=''">
                           <mat-icon>close</mat-icon>
                         </button>
                     </mat-form-field>
                 </div>
-                <div class="col col-3">
+                <div class="col">
                     <mat-form-field class="form-field" >
-                        <mat-label>Descripción</mat-label>
-                        <input matInput type="string" [(ngModel)]="descripcionValue" #descripcionPrueba>
-                        <button *ngIf="descripcionValue" matSuffix mat-icon-button aria-label="Clear" (click)="descripcionValue=''">
+                        <mat-label>Ingresa la edad del afiliado</mat-label>
+                        <input matInput type="number" [(ngModel)]="edadValue" #edadAfiliado>
+                        <button *ngIf="edadValue" matSuffix mat-icon-button aria-label="Clear" (click)="edadValue=0">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="form-field" >
+                        <mat-label>Ingresa el correo</mat-label>
+                        <input matInput type="string" [(ngModel)]="mailValue" #mailAfiliado>
+                        <button *ngIf="mailValue" matSuffix mat-icon-button aria-label="Clear" (click)="mailValue=''">
                           <mat-icon>close</mat-icon>
                         </button>
                     </mat-form-field>
@@ -26,7 +35,7 @@
             <div class="row  justify-content-end">
                 <div class="col col-1">
                     <button type="button" class="btn btn-success"
-                    (click)="post(nombrePrueba, descripcionPrueba)">Guardar</button>
+                    (click)="dialogConfirmacion(nombreAfiliado, edadAfiliado, mailAfiliado)">Guardar</button>
                 </div>
                 <div class="col col-2">
                     <button type="button" class="btn btn-danger" routerLink="/Afiliados">Cancelar</button>
@@ -34,4 +43,7 @@
             </div>
         </div>
     </mat-card>
+
 </div>
+
+

@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card class="card_form">
         <div class="container">
-            <h3><b>Pruebas- Nueva Prueba</b></h3>
+            <h3><b>Pruebas- Actualizar Prueba : ID {{id}}</b></h3>
             <div class="row">
                 <div class="col col-3">
                     <mat-form-field class="form-field" >
@@ -26,7 +26,7 @@
             <div class="row  justify-content-end">
                 <div class="col col-1">
                     <button type="button" class="btn btn-success"
-                    (click)="post(nombrePrueba, descripcionPrueba)">Guardar</button>
+                    (click)="dialogConfirmacion(nombrePrueba, descripcionPrueba)">Guardar</button>
                 </div>
                 <div class="col col-2">
                     <button type="button" class="btn btn-danger" routerLink="/Afiliados">Cancelar</button>
@@ -35,3 +35,4 @@
         </div>
     </mat-card>
 </div>
+
