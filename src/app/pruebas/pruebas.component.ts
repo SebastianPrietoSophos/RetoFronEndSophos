@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TestsModel } from '../core/models/tests.model';
 import { idShare } from '../core/services/idShare.service';
 import { testsGet } from '../core/services/tests.service';
+import { DialogDeleteTestComponent } from './dialog-delete-test/dialog-delete-test.component';
 
 @Component({
   selector: 'app-pruebas',
@@ -12,7 +14,8 @@ export class PruebasComponent {
   public dataSource : Array<TestsModel> = [];
   displayedColumns = ['ID', 'Nombre', 'Descripción', 'Opciones'];
 
-  constructor(public service : testsGet, public serviceId : idShare){}
+  constructor(public service : testsGet, public serviceId : idShare,
+              public dialog: MatDialog,){}
 
   ngOnInit(): void {
     this.service.getList().subscribe(resp=>{this.dataSource=resp;
@@ -26,6 +29,6 @@ export class PruebasComponent {
 
   }
   borrar(id : number){
-    console.log("el id selecionado es "+ this.dataSource[id].id);
+    this.dialog.open(DialogDeleteTestComponent,{data:{id: this.dataSource[id].id}});
   }
 }

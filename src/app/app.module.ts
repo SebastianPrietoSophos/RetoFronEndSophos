@@ -55,6 +55,9 @@ import { PruebaActualizacionComponent } from './pruebas/prueba-actualizacion/pru
 import { DialogConfirmationPutPruebaComponent } from './pruebas/prueba-actualizacion/dialog-confirmation-put/dialog-confirmation-put.component';
 import { AfiliadoActualizacionComponent } from './afiliados/afiliado-actualizacion/afiliado-actualizacion.component';
 import { DialogConfirmationPutAffiliateComponent } from './afiliados/afiliado-actualizacion/dialog-confirmation-put-affiliate/dialog-confirmation-put-affiliate.component';
+import { DialogDeleteAppointmentComponent } from './citas/dialog-delete-appointment/dialog-delete-appointment.component';
+import { DialogDeleteAffiliateComponent } from './afiliados/dialog-delete-affiliate/dialog-delete-affiliate.component';
+import { DialogDeleteTestComponent } from './pruebas/dialog-delete-test/dialog-delete-test.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +80,10 @@ import { DialogConfirmationPutAffiliateComponent } from './afiliados/afiliado-ac
     DialogConfirmationPutComponent,
     DialogConfirmationPutPruebaComponent,
     AfiliadoActualizacionComponent,
-    DialogConfirmationPutAffiliateComponent
+    DialogConfirmationPutAffiliateComponent,
+    DialogDeleteAppointmentComponent,
+    DialogDeleteAffiliateComponent,
+    DialogDeleteTestComponent
   ],
   imports: [
     BrowserModule,
