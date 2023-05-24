@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/app/environments/environments.master";
 import { Observable } from 'rxjs';
-import { AffiliatesList } from "../models/affiliatesGetList.model";
+import { Appointments } from "../models/affiliatesGetList.model";
 
 @Injectable({
     providedIn: 'root'
@@ -14,9 +14,9 @@ export class affiliateGetList{
 
     constructor(private http : HttpClient){}
 
-    getList():Observable<AffiliatesList[]> {
+    getList():Observable<Appointments[]> {
 
-        return this.http.get<AffiliatesList[]>(this.url);
+        return this.http.get<Appointments[]>(this.url);
 
     }
 }

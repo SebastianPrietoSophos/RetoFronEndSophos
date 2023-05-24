@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/app/environments/environments.master";
 import { Observable } from 'rxjs';
-import { AffiliatesList } from "../models/affiliatesGetList.model";
+import { Appointments } from "../models/affiliatesGetList.model";
 
 @Injectable({
     providedIn: 'root'
@@ -15,15 +15,15 @@ export class master{
 
     constructor(private http : HttpClient){}
 
-    geByIDList(id: number):Observable<AffiliatesList[]> {
+    geByIDList(id: number):Observable<Appointments[]> {
         console.log(this.urlId);
-        return this.http.get<AffiliatesList[]>(this.urlId + 'affiliate/' + id);
+        return this.http.get<Appointments[]>(this.urlId + 'affiliate/' + id);
 
     }
 
-    geByDateList(date: string):Observable<AffiliatesList[]> {
+    geByDateList(date: string):Observable<Appointments[]> {
         const params = new HttpParams().set('date', date);
         console.log(this.urlDate);
-        return this.http.get<AffiliatesList[]>(this.urlDate,{params});
+        return this.http.get<Appointments[]>(this.urlDate,{params});
     }
 }

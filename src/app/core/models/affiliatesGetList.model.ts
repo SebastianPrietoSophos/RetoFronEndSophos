@@ -1,4 +1,4 @@
-export interface AffiliatesList{
+export interface Appointments{
 
     id: number,
     date: string,
@@ -15,8 +15,14 @@ export interface Affiliates {
         id : number,
         nombre : string,
         age : number,
-        mail : string,
-        expanded : boolean,
-        citas : any[] | null
+        mail : string
 }
 
+export interface AffiliatesOrganized {
+        id : number,
+        nombre : string,
+        age : number,
+        mail : string,
+        showAppointments : boolean,
+        appointments : Appointments[]
+}

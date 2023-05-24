@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AffiliatesList } from 'src/app/core/models/affiliatesGetList.model';
+import { Appointments } from 'src/app/core/models/affiliatesGetList.model';
 import { master } from 'src/app/core/services/master.service';
 
 
@@ -12,7 +12,7 @@ import { master } from 'src/app/core/services/master.service';
 export class HomeComponent {
 
 
-  public dataSource : Array<AffiliatesList> = [];
+  public dataSource : Array<Appointments> = [];
   
 
   constructor(public service: master){}

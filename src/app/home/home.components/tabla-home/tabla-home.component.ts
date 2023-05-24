@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewChecked, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { AffiliatesList , Affiliates} from 'src/app/core/models/affiliatesGetList.model';
+import { AfterViewChecked, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Appointments , Affiliates, AffiliatesOrganized} from 'src/app/core/models/affiliatesGetList.model';
 import { affiliateGetList } from 'src/app/core/services/affiliateGetList.service';
 
 
@@ -16,26 +16,46 @@ import { affiliateGetList } from 'src/app/core/services/affiliateGetList.service
     ])
   ]
 })
-export class TablaHomeComponent implements AfterViewChecked {
-  
-  @Input() dataSourceTable : Array<AffiliatesList> = [];
+export class TablaHomeComponent implements OnChanges{
+
+  @Input() dataSourceTable : Array<Appointments> = [];
   
   columnsToDisplay = ['Id Afiliado', 'Nombre', 'Edad', 'Correo', " + "];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement: AffiliatesList | null | undefined;
-  afiliadosMostrados : Array<number> = [0];
-  wasntShown : boolean = true;
+  organizedAppointments : Array<AffiliatesOrganized> = [];
 
-  constructor(private cdRef : ChangeDetectorRef){}
-  ngAfterViewChecked(): void {
-    this.cdRef.detectChanges();
-  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.organizeAppointments();
+    console.log("Un cambio fue hecho en data source table")
+    console.log(this.organizedAppointments)
+  }  
 
-  toggleAffiliate(affiliate: Affiliates){
-    affiliate.citas = affiliate.citas ? null : this.getCitasPorAfiliado(affiliate.id);
-  }
 
   getCitasPorAfiliado(afiliadoId: number): any[]{
    return this.dataSourceTable.filter(cita => cita.affiliates.id === afiliadoId); 
   }
+
+
+    organizeAppointments(): void {
+        const appointmentsByAffiliate: { [key: number]: any } = {};
+        this.dataSourceTable.forEach(appointment => {
+          const affiliateId = appointment.affiliates.id;
+          if (appointmentsByAffiliate[affiliateId]) {
+            appointmentsByAffiliate[affiliateId].appointments.push(appointment);
+          } else {
+            appointmentsByAffiliate[affiliateId] = {
+              ...appointment.affiliates,
+              appointments: [appointment],
+              showAppointments: false //Propiedad para controlar la vista
+            };
+          }
+        }); 
+        this.organizedAppointments = Object.values(appointmentsByAffiliate);
+      }
+  
+    toggleAffiliate(affiliate: AffiliatesOrganized){
+      // affiliate.citas = affiliate.citas ? null : this.getCitasPorAfiliado(affiliate.id);
+      affiliate.showAppointments = !affiliate.showAppointments;
+    }
+    
 }

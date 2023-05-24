@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AffiliatesList } from '../models/affiliatesGetList.model';
+import { Appointments } from '../models/affiliatesGetList.model';
 import { affiliateGetList } from '../services/affiliateGetList.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { affiliateGetList } from '../services/affiliateGetList.service';
 })
 export class AffiliatesGetListComponent {
 
-  public bodyArray: Array<AffiliatesList> = [];
+  public bodyArray: Array<Appointments> = [];
 
   constructor(public service: affiliateGetList){}
 
