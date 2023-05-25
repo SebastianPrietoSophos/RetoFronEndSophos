@@ -39,7 +39,7 @@ import { HomeComponent } from './home/home.component';
 import { DatePickerComponent } from './home/home.components/date-picker/date-picker.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { IdPickerComponent } from './home/home.components/id-picker/id-picker.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MY_FORMATS } from './environments/my_date_format';
 import { TablaHomeComponent } from './home/home.components/tabla-home/tabla-home.component';
 import { CitasComponent } from './citas/citas.component';
@@ -106,7 +106,8 @@ import { DialogDeleteTestComponent } from './pruebas/dialog-delete-test/dialog-d
     RouterModule,
     MatDividerModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatTabsModule,

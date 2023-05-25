@@ -23,19 +23,17 @@
                 <div class="col">
                     <mat-form-field class="form-field" >
                         <mat-label>Ingresa el ID del afiliado</mat-label>
-                        <input matInput type="number" [(ngModel)]="valueAffiliate" #idSeleccionadoAfiliado>
-                        <button *ngIf="valueAffiliate" matSuffix mat-icon-button aria-label="Clear" (click)="valueAffiliate=0">
-                          <mat-icon>close</mat-icon>
-                        </button>
+                        <mat-select  [(ngModel)]="valueAffiliate" #idSeleccionadoAfiliado>
+                            <mat-option [value]="data.id"  *ngFor=" let data of dataSource">{{data.id}}</mat-option>
+                          </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="col">
                     <mat-form-field class="form-field" >
                         <mat-label>Ingresa el ID de la prueba</mat-label>
-                        <input matInput type="number" [(ngModel)]="valueTest" #idSeleccionadoPrueba>
-                        <button *ngIf="valueTest" matSuffix mat-icon-button aria-label="Clear" (click)="valueTest=0">
-                          <mat-icon>close</mat-icon>
-                        </button>
+                        <mat-select  [(ngModel)]="valueTest" #idSeleccionadoPrueba>
+                            <mat-option [value]="data.id"  *ngFor=" let data of dataPruebas">{{data.id}}</mat-option>
+                          </mat-select>
                     </mat-form-field>
                 </div>
             </div>
@@ -44,7 +42,7 @@
                 <div class="col col-1">
                     <button type="button" class="btn btn-success"
                     (click)="dialogConfirmacion(
-                        fechaseleccionada, horaseleccionada, idSeleccionadoAfiliado, idSeleccionadoPrueba)" 
+                        fechaseleccionada, horaseleccionada)" 
                     data-bs-toggle="modal" data-bs-target="#exampleModal">Guardar</button>
                 </div>
                 <div class="col col-2">
