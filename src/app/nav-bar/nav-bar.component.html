@@ -1,6 +1,6 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="md-tall">
 
-    <button mat-button routerLink="/">
+    <button mat-flat-button color="primary" routerLink="/">
     <mat-icon>home</mat-icon> 
         Agenda de Citas - Reto Semillero</button>
 
@@ -8,11 +8,11 @@
     <span class="fill-remaining-space"></span>
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
         
-        <a routerLink="/Citas" class="button" mat-button routerLinkActive="activebutton">
+        <a routerLink="/Citas" class="button" mat-flat-button color="primary" routerLinkActive="activebutton">
             <mat-icon>event</mat-icon>Citas </a>
-        <a class="button" mat-button routerLink="/Pruebas">
+        <a class="button" mat-flat-button color="primary" routerLink="/Pruebas">
             <mat-icon>list_alt</mat-icon>Pruebas</a>
-        <a class="button" mat-button routerLink="/Afiliados">
+        <a class="button" mat-flat-button color="primary" routerLink="/Afiliados">
             <mat-icon>assignment_ind</mat-icon>Afiliados</a>
     </div>
     <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>

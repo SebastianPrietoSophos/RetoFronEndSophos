@@ -1,13 +1,19 @@
+<form [formGroup]="myForm" (ngSubmit)="confirmDate(myForm.get('date')?.value)">
 <mat-form-field>
   <mat-label>Elige una fecha</mat-label>
-  <input matInput [matDatepicker]="picker" #fechaseleccionada>
-  <mat-hint>DD/MM/YYYY</mat-hint>
+  <input matInput [matDatepicker]="picker" #fechaseleccionada formControlName="date">
+  <mat-hint>DD-MM-YYYY</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
+  <mat-error *ngIf="myForm.get('date')?.invalid && myForm.get('date')?.touched">
+    La fecha es requerida
+  </mat-error>
 </mat-form-field>
   
-  <button mat-fab extended color="primary" (click)="confirmDate(fechaseleccionada)">
+  <button  mat-fab extended color="primary" type="submit"
+   [disabled]="myForm.invalid" (click)="confirmDate(fechaseleccionada.value)">
     <mat-icon>search</mat-icon>
     Consultar
 </button>
+</form>
   

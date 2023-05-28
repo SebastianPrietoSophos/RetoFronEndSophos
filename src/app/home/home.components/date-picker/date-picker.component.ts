@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -11,8 +12,18 @@ export class DatePickerComponent {
     
   @Output() fecha_elegida = new EventEmitter<string>;
 
-  confirmDate(fechaSeleccionada : HTMLInputElement){
-    console.log(fechaSeleccionada.value);
-    this.fecha_elegida.emit(fechaSeleccionada.value);
+  myForm: FormGroup;
+
+  constructor( private formBuilder: FormBuilder){
+    this.myForm = this.formBuilder.group({
+      date: ['', Validators.required]
+    });
+  }
+
+  confirmDate(fechaSeleccionada : any){
+    if (this.myForm.valid){
+      console.log(fechaSeleccionada);
+      this.fecha_elegida.emit(fechaSeleccionada);
+    }
   }
 }

@@ -1,56 +1,66 @@
-<div class="container">
-    <mat-card class="card_form">
-        <div class="container">
-            <h2>Citas- Nueva Cita</h2>
-            <hr color=303d8d size="6px" />
-            <br>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="form-field">
-                        <mat-label>Elige una fecha</mat-label>
-                        <input matInput [matDatepicker]="picker" #fechaseleccionada>
-                        <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                </div>
-                <div class="col">
-                    <mat-form-field class="form-field">
-                        <mat-label>Selecciona la hora</mat-label>
-                        <mat-select  [(value)]="selectedHour" #horaseleccionada>
-                          <mat-option [value]="hora"  *ngFor=" let hora of horasCitas">{{hora}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                </div>
-                <div class="col">
-                    <mat-form-field class="form-field" >
-                        <mat-label>Ingresa el ID del afiliado</mat-label>
-                        <mat-select  [(ngModel)]="valueAffiliate" #idSeleccionadoAfiliado>
-                            <mat-option [value]="data.id"  *ngFor=" let data of dataSource">{{data.id}}</mat-option>
-                          </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="col">
-                    <mat-form-field class="form-field" >
-                        <mat-label>Ingresa el ID de la prueba</mat-label>
-                        <mat-select  [(ngModel)]="valueTest" #idSeleccionadoPrueba>
-                            <mat-option [value]="data.id"  *ngFor=" let data of dataPruebas">{{data.id}}</mat-option>
-                          </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-            <br>
-            <div class="row  justify-content-end">
-                <div class="col col-1">
-                    <button type="button" class="btn btn-success" 
-                    (click)="post(fechaseleccionada, horaseleccionada)">Guardar</button>
-                </div>
-                <div class="col col-2">
-                    <button type="button" class="btn btn-danger" routerLink="/Citas">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </mat-card>
 
-</div>
+    <div class="container">
+        <form [formGroup]="form">
+            <mat-card class="card_form">
+                <div class="container">
+                    <h2>Citas- Nueva Cita</h2>
+                    <hr color=303d8d size="6px" />
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field class="form-field">
+                                <mat-label>Elige una fecha</mat-label>
+                                <input matInput [matDatepicker]="picker" #fechaseleccionada formControlName="fechaSeleccionada" required>
+                                <mat-hint>DD/MM/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error *ngIf="form.get('fechaSeleccionada')?.invalid && (form.get('fechaSeleccionada')?.dirty || form.get('date')?.touched)">
+                                    Le fecha es requerrida
+                                </mat-error>
+                              </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field class="form-field">
+                                <mat-label>Selecciona la hora</mat-label>
+                                <mat-select   #horaseleccionada formControlName="selectedHour" required>
+                                  <mat-option [value]="hora"  *ngFor=" let hora of horasCitas">{{hora}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="!horaseleccionada"> Hora Requerida. </mat-error>
+                              </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field class="form-field" >
+                                <mat-label>Ingresa el ID del afiliado</mat-label>
+                                <mat-select  #idSeleccionadoAfiliado formControlName="idSeleccionadoAfiliado" required>
+                                    <mat-option [value]="data.id"  *ngFor=" let data of dataSource">{{data.id}}</mat-option>
+                                  </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field class="form-field" >
+                                <mat-label>Ingresa el ID de la prueba</mat-label>
+                                <mat-select  #idSeleccionadoPrueba formControlName="idSeleccionadoPrueba" required>
+                                    <mat-option [value]="data.id"  *ngFor=" let data of dataPruebas">{{data.id}}</mat-option>
+                                  </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row  justify-content-end">
+                        <div class="col col-1">
+                            <button type="button" class="btn btn-success" 
+                            (click)="post(fechaseleccionada.value, horaseleccionada.value, 
+                            idSeleccionadoAfiliado.value, idSeleccionadoPrueba.value)" routerLink="/Citas"
+                            [disabled]="form.invalid">Guardar</button>
+                        </div>
+                        <div class="col col-2">
+                            <button type="button" class="btn btn-danger" routerLink="/Citas" >Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
 
+        </form>
+        
+    
+    </div>

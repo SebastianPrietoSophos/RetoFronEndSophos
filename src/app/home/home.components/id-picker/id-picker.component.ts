@@ -11,10 +11,10 @@ export class IdPickerComponent {
 
   @Output() id_elegido = new EventEmitter<number>;
 
-  confirmId(idSeleccionado : HTMLInputElement){
-    console.log(idSeleccionado.value);
-    this.id_elegido.emit(idSeleccionado.valueAsNumber);
-    console.log(idSeleccionado.valueAsNumber)
+  confirmId(idSeleccionado : number){
+    console.log(idSeleccionado);
+    this.id_elegido.emit(idSeleccionado);
+    console.log(idSeleccionado)
   }
   
 }

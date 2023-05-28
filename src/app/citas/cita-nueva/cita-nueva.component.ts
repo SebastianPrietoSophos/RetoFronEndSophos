@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { AffiliatesModel } from 'src/app/core/models/affiliates.model';
 import { Affiliates, Appointments } from 'src/app/core/models/affiliatesGetList.model';
@@ -16,9 +17,17 @@ import { testsGet } from 'src/app/core/services/tests.service';
 })
 export class CitaNuevaComponent implements OnInit{
 
+  form : FormGroup;
   
   constructor(private service : appointmentsPost , private serviceGetData: affiliatesGet,
-    private serviceTests: testsGet){}
+    private serviceTests: testsGet, private formBuilder: FormBuilder){
+      this.form = this.formBuilder.group({
+        fechaSeleccionada: ['', Validators.required],
+        selectedHour: ['', Validators.required],
+        idSeleccionadoAfiliado: ['', Validators.required],
+        idSeleccionadoPrueba: ['', Validators.required]
+      });
+    }
   
   public dataSource : Array<AffiliatesModel> = [];
   public dataPruebas :  Array<TestsModel> = [];
@@ -37,18 +46,19 @@ export class CitaNuevaComponent implements OnInit{
     selectedHour : string = '';
     valueAffiliate : number = 1;
     valueTest : number = 1;
+    dateValue : string = '';
     public newAppointment : AppointmentsModel = {
                                                   date:"12-12-2012",
                                                   hour:"12:12:00",
                                                   tests:{id:1},
                                                   affiliates:{id:1}};
     
-    post(fecha: HTMLInputElement, hora: any){
-      console.log(fecha.value, hora.value, this.valueAffiliate, this.valueTest);
-      this.newAppointment.date= fecha.value;
-      this.newAppointment.hour= hora.value;
-      this.newAppointment.tests.id= this.valueAffiliate;
-      this.newAppointment.affiliates.id= this.valueTest;
+    post(fecha: string ,hora: string, id_aff: any, id_test: any){
+      console.log(fecha, hora, id_aff, id_test);
+      this.newAppointment.date= fecha;
+      this.newAppointment.hour= hora;
+      this.newAppointment.tests.id= id_aff;
+      this.newAppointment.affiliates.id= id_test;
       this.service.postAppointment(this.newAppointment);
     }
 

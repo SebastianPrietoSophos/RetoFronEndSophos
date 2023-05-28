@@ -1,5 +1,6 @@
 import { HtmlParser } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AffiliatesModel } from 'src/app/core/models/affiliates.model';
 import { TestsModel } from 'src/app/core/models/tests.model';
@@ -25,9 +26,19 @@ export class CitaActualizacionComponent implements OnInit{
     public dataSource : Array<AffiliatesModel> = [];
   public dataPruebas :  Array<TestsModel> = [];
 
+  form : FormGroup;
+
     constructor(public dialog: MatDialog, private service: idShare,
       private serviceGetData: affiliatesGet,
-    private serviceTests: testsGet){}
+    private serviceTests: testsGet, private formBuilder: FormBuilder){
+      
+      this.form = this.formBuilder.group({
+        fechaSeleccionada: ['', Validators.required],
+        selectedHour: ['', Validators.required],
+        idSeleccionadoAfiliado: ['', Validators.required],
+        idSeleccionadoPrueba: ['', Validators.required]
+      });
+    }
 
   ngOnInit(): void {
     this.service.currentId.subscribe(id=> this.id = id);
@@ -37,15 +48,15 @@ export class CitaActualizacionComponent implements OnInit{
   }
 
     dialogConfirmacion(
-      fecha: HTMLInputElement, hora: any){
+      fecha: string, hora: string, id_aff: number, id_test: number){
       this.service.currentId.subscribe(id=> this.id = id);
       this.dialog.open(DialogConfirmationPutComponent,
                       {data: {
                         id: this.id,
-                        fecha: fecha.value,
-                        hora: hora.value,
-                        idAfiliado: this.valueAffiliate,
-                        idPrueba: this.valueTest
+                        fecha: fecha,
+                        hora: hora,
+                        idAfiliado: id_aff,
+                        idPrueba: id_test
                       }});
     }
     

@@ -2,8 +2,14 @@
     <h2>Consultas</h2>
     <hr color=303d8d size="6px" style="border: solid"/>
     <br>
-    <app-date-picker (fecha_elegida)="getListByDate($event)"></app-date-picker>
-    <app-id-picker (id_elegido)="getListById($event)"></app-id-picker>
+    <div class="row">
+        <div class="col-5">
+            <app-date-picker (fecha_elegida)="getListByDate($event)"></app-date-picker>
+        </div>
+        <div class="col-6">
+            <app-id-picker (id_elegido)="getListById($event)"></app-id-picker>
+        </div>
+    </div>
 </div>
 <br>
 <br>
