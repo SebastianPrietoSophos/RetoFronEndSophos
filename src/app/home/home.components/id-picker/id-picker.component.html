@@ -1,0 +1,17 @@
+<mat-form-field class="form-field" >
+    <mat-label>Ingresa el ID del afiliado</mat-label>
+    <input matInput type="number" [(ngModel)]="value" #idSeleccionado="ngModel" name="idSeleccionado" required min="1">
+    <mat-error *ngIf="idSeleccionado.invalid && (idSeleccionado.dirty || idSeleccionado.touched)">
+      El ID del afiliado es invalido
+    </mat-error>
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+   
+  </mat-form-field>
+
+  <button mat-fab extended color="primary" [disabled]="idSeleccionado.invalid"
+    (click)="confirmId(idSeleccionado.value)">
+    <mat-icon>search</mat-icon>
+    Consultar
+</button>

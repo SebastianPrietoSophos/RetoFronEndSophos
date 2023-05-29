@@ -1,0 +1,41 @@
+<div class="container">
+    <form [formGroup]="form">
+    <mat-card class="card_form">
+        <div class="container">
+            <h3><b>Pruebas- Actualizar Prueba : ID {{id}}</b></h3>
+            <div class="row">
+                <div class="col col-3">
+                    <mat-form-field class="form-field" >
+                        <mat-label>Ingresa el Nombre</mat-label>
+                        <input matInput type="string" #nombrePrueba formControlName="nombre">
+                        <button *ngIf="nombreValue" matSuffix mat-icon-button aria-label="Clear" (click)="nombreValue=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div class="col col-3">
+                    <mat-form-field class="form-field" >
+                        <mat-label>Descripción</mat-label>
+                        <input matInput type="string" #descripcionPrueba formControlName="descripcion">
+                        <button *ngIf="descripcionValue" matSuffix mat-icon-button aria-label="Clear" (click)="descripcionValue=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
+            <br>
+            <div class="row  justify-content-end">
+                <div class="col col-1">
+                    <button type="button" class="btn btn-success"
+                    (click)="dialogConfirmacion(nombrePrueba, descripcionPrueba)"
+                    [disabled]="form.invalid">Guardar</button>
+                </div>
+                <div class="col col-2">
+                    <button type="button" class="btn btn-danger" routerLink="/Pruebas">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</form>
+</div>
+

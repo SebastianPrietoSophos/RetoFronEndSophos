@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Confirmación Eliminar Prueba con ID {{data.id}}</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Desea continuar?</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial 
+        (click)="borrar(data.id)"
+        routerLink="/Pruebas">Confirmar</button>
+</mat-dialog-actions>
+

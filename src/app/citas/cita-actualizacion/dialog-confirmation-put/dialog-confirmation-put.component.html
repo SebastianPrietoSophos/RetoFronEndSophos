@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Confirmación Actualizar Cita con ID {{data.id}}</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Desea continuar?</h3>
+  <h4><b>Datos Nuevos</b></h4>
+  <p>Fecha: {{data.fecha}}</p>
+  <p>Hora: {{data.hora}}</p>
+  <p>id afiliado: {{data.idAfiliado}}</p>
+  <p>id prueba: {{data.idPrueba}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial 
+        (click)="put(data.id, data.fecha, data.hora, data.idAfiliado, data.idPrueba)"
+        routerLink="/Citas">Confirmar</button>
+</mat-dialog-actions>

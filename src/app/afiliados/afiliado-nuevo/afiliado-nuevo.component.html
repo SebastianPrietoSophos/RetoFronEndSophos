@@ -1,0 +1,55 @@
+<div class="container">
+    <form [formGroup]="form">
+        <mat-card class="card_form">
+            <div class="container">
+                <h2>Afiliados- Nuevo Afiliado</h2>
+                <hr color=303d8d size="6px" />
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="form-field" >
+                            <mat-label>Ingresa el Nombre</mat-label>
+                            <input matInput type="string" formControlName="nombre" #nombreAfiliado required>
+                            <button *ngIf="nombreValue" matSuffix mat-icon-button aria-label="Clear" (click)="nombreValue=''">
+                              <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="form-field" >
+                            <mat-label>Ingresa la edad del afiliado</mat-label>
+                            <input matInput type="number" #edadAfiliado formControlName="edad" required min="1">
+                            <button *ngIf="edadValue" matSuffix mat-icon-button aria-label="Clear" (click)="edadValue=0">
+                              <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="form-field" >
+                            <mat-label>Ingresa el correo</mat-label>
+                            <input matInput type="string" #mailAfiliado formControlName="correo" required>
+                            <mat-error *ngIf="form.get('correo')?.hasError('required')">Ingrese el correo</mat-error>
+                            <mat-error *ngIf="form.get('correo')?.hasError('email')">Formato Invalido, ejemplo: asdd@correo.com </mat-error>
+                            <button *ngIf="mailValue" matSuffix mat-icon-button aria-label="Clear" (click)="mailValue=''">
+                              <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <br>
+                <div class="row  justify-content-end">
+                    <div class="col col-1">
+                        <button type="button" class="btn btn-success" routerLink="/Afiliados"
+                        (click)="post(nombreAfiliado, edadAfiliado, mailAfiliado)"
+                        [disabled]="form.invalid">Guardar</button>
+                    </div>
+                    <div class="col col-2">
+                        <button type="button" class="btn btn-danger" routerLink="/Afiliados">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </form>
+</div>
+
+

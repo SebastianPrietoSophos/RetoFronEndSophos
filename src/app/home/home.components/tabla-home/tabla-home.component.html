@@ -1,0 +1,98 @@
+<div class="container">
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let column of columnsToDisplay">{{column}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let data of organizedAppointments">
+                    <tr >
+                        <th scope="row">{{data.id}}</th>
+                        <td>{{data.nombre}}</td>
+                        <td>{{data.age}}</td>
+                        <td>{{data.mail}}</td>
+                        <td>
+                            <button button mat-icon-button (click)="toggleAffiliate(data)">
+                            <mat-icon>expand_more</mat-icon>
+                        </button>
+                        </td>
+                      </tr>
+                      <tr *ngIf="data.showAppointments">
+                        <td colspan="5">
+                            <div class="container">
+                                <table class="table text-center align-middle">
+                                    <thead>
+                                        <th>Id Cita</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Nombre de la prueba</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let appointment of data.appointments">
+                                            <td>{{appointment.id}}</td>
+                                            <td>{{appointment.date}}</td>
+                                            <td>{{appointment.hour}}</td>
+                                            <td>{{appointment.tests.nombre}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            
+                        </td>            
+                    </tr>   
+            </ng-container>
+        </tbody>
+      </table>
+
+     
+</div>
+
+<!-- <div class="container">
+    <table class="table table-striped table-hover text-center align-middle">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let column of columnsToDisplay">{{column}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let data of dataSourceTable">
+                    <tr >
+                        <th scope="row">{{data.affiliates.id}}</th>
+                        <td>{{data.affiliates.nombre}}</td>
+                        <td>{{data.affiliates.age}}</td>
+                        <td>{{data.affiliates.mail}}</td>
+                        <td>
+                            <button button mat-icon-button (click)="toggleAffiliate(data.affiliates)">
+                            <mat-icon>expand_more</mat-icon>
+                        </button>
+                        </td>
+                      </tr>
+                      <tr *ngIf="data.affiliates.citas">
+                        <td colspan="5">
+                            <div class="container">
+                                <table class="table text-center align-middle">
+                                    <thead>
+                                        <th>Id Cita</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Nombre de la prueba</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let appointment of data.affiliates.citas ">
+                                            <td>{{appointment.id}}</td>
+                                            <td>{{appointment.date}}</td>
+                                            <td>{{appointment.hour}}</td>
+                                            <td>{{appointment.tests.nombre}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            
+                        </td>            
+                    </tr>   
+            </ng-container>
+        </tbody>
+      </table>
+
+     
+</div> -->
+
